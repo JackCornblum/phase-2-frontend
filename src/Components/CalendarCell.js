@@ -28,16 +28,16 @@ function CalendarCell({id}){
         })
     }
 
+
     return (
         <td id={id}>
             <Popup trigger={<button> Add Meal</button>} position="right center">
                 <form onSubmit={handleSubmit}>
                     <input type="text" value={searchValue} onChange={handleChange}></input>
                 </form>
-                {/* {foodResults} */}
-                {/* <FoodItem /> */}
+
                 {resultState}
-                {/* <div>{resultState ? foodResults : <p>no results yet</p>}</div> */}
+                
             </Popup>
         </td>
     )
