@@ -1,6 +1,7 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import CalendarCell from './CalendarCell';
+import {Table} from "react-bootstrap"
 
 function Calendar(){
 
@@ -14,7 +15,7 @@ function Calendar(){
 
     return(
         <div>
-            <table>
+            <Table striped>
                 <tbody>
 
                 <tr>
@@ -40,7 +41,7 @@ function Calendar(){
                 </tr>
                 </tbody>
                 
-            </table>
+            </Table>
             
         </div>
     )
