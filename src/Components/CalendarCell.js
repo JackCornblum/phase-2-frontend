@@ -48,7 +48,7 @@ function CalendarCell({id}){
     }
 
     let popupJsx = (
-        <Popup onClose={handleClick} contentStyle={{width:auto}} trigger={<button  variant="success" size="sm"> Add Meal</button>} position="right center">
+        <Popup onClose={handleClick} contentStyle={{width:auto}} trigger={<Button  variant="success" size="sm"> Add Meal</Button>} position="right center">
             <form onSubmit={handleSubmit}>
                 <input type="text" value={searchValue} onChange={handleChange}></input>
             </form>
