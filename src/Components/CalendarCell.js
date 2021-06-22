@@ -2,6 +2,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import {useState} from 'react';
 import FoodItem from './FoodItem'
+import {Button} from "react-bootstrap"
 
 function CalendarCell({id}){
 
@@ -31,7 +32,7 @@ function CalendarCell({id}){
 
     return (
         <td id={id}>
-            <Popup trigger={<button> Add Meal</button>} position="right center">
+            <Popup trigger={<Button variant="success" size="sm"> Add Meal</Button>} position="right center">
                 <form onSubmit={handleSubmit}>
                     <input type="text" value={searchValue} onChange={handleChange}></input>
                 </form>
