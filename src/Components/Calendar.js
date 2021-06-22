@@ -15,24 +15,30 @@ function Calendar(){
     return(
         <div>
             <table>
-                <thead>
+                <tbody>
+
+                <tr>
                     <th>Meals</th>
                     <th>Monday</th>
                     <th>Tuesday</th>
                     <th>Wednesday</th>
                     <th>Thursday</th>
                     <th>Friday</th>
-                </thead>
+                </tr>
                 
-                <tr>Morning
+                <tr>
+                    <td>Morning</td>
                     {morningPopup}
                 </tr>
-                <tr>Afternoon
+                <tr>
+                    <td>Afternoon</td>
                     {afternoonPopup}
                 </tr>
-                <tr>Evening
+                <tr>
+                    <td>Evening</td>
                     {eveningPopup}
                 </tr>
+                </tbody>
                 
             </table>
             
