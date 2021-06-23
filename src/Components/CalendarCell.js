@@ -1,18 +1,35 @@
 import 'reactjs-popup/dist/index.css';
 import Popup from 'reactjs-popup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from "react-bootstrap"
 import { auto } from '@popperjs/core';
 
 import FoodItem from './FoodItem'
 
 function CalendarCell({cellId}) {
-
-    const key = '9408d54a6e154e6abc0e74e0d986d24b'
-
     const [searchValue, setSearchValue] = useState("")
     const [searchResults, setSearchResults] = useState([])
     const [popupRendered, setPopupRendered] = useState(true)
+
+    useEffect(() => {
+        fetch("http://localhost:3001/recipes")
+        .then(resp => resp.json())
+        .then(data => {
+            // console.log(data)
+            // console.log(cellId)
+            data.forEach(obj => {
+                if(obj.cell === cellId){
+                    let recipeDetails = <FoodItem setSearchValue={setSearchValue} setSearchResults={setSearchResults} setPopupRendered={setPopupRendered} title={obj.name} image={obj.image} recipe={obj.recipe} key={obj.id} recipeId={obj.id} calories={obj.calories}/>
+                    setSearchResults(recipeDetails)
+                    setPopupRendered(false)
+                }
+                
+            })
+        })
+    }, [])
+
+    const key = '9408d54a6e154e6abc0e74e0d986d24b'
+
 
     function handleChange(e) {
         setSearchValue(e.target.value)
@@ -37,11 +54,14 @@ function CalendarCell({cellId}) {
     }
 
     function renderRecipe(id){
+        console.log(id)
         let fetchUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${key}&includeNutrition=true`
         fetch(fetchUrl)
         .then(resp => resp.json())
         .then(data => {
-            let recipeObj = {recipe: data.sourceUrl, name: data.title, image: data.image, calories: data.nutrition.nutrients[0].amount, cell: cellId}
+            console.log(data)
+            let ingredients = data.nutrition.ingredients.map(item => item.name)
+            let recipeObj = {recipe: data.sourceUrl, name: data.title, image: data.image, calories: data.nutrition.nutrients[0].amount, cell: cellId, ingredients: ingredients}
             fetch("http://localhost:3001/recipes", {
                 method: "POST",
                 headers: {
