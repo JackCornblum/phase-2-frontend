@@ -23,18 +23,10 @@ function FoodItem({title, image, id, calories, recipe, setPopupRendered, renderR
 
     return (
         <div>
-<<<<<<< HEAD
-            <h3>{title}</h3>
-            <img src={image} />
-            <Button variant="primary" onClick={handleClick} id={id} size="sm" >{popupRendered ? "Add to Planner" : "Remove"}</Button>
-            
-            
-=======
             <a href={recipe}>{title}</a><br />
             <small>Calories: {calories}</small><br />
             <img src={image} alt={title} /><br />
             <Button variant="success" size="sm" onClick={handleClick} id={id}>{popupRendered ? "Add to Planner" : "Remove"}</Button>
->>>>>>> 2a9269a7de2e4ae219557bae0c58b10393c110b4
         </div>
     )
 }
