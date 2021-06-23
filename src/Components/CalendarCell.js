@@ -20,17 +20,18 @@ function CalendarCell({cellId}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        let fetchUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&query=${searchValue}&number=5`
+        let fetchUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&query=${searchValue}&number=5&addRecipeNutrition=true`
         fetch(fetchUrl)
         .then(res => res.json())
         .then(data => {
             let foodResults = data.results.map(obj => {
                 return (
                     <>
-                        <FoodItem setSearchResults={setSearchResults} setSearchValue={setSearchValue} popupRendered={popupRendered} renderRecipe={renderRecipe} setPopupRendered={setPopupRendered} recipe={data.sourceUrl} title={obj.title} image={obj.image} id={obj.id} key={obj.id} /><br />
+                        <FoodItem setSearchResults={setSearchResults} setSearchValue={setSearchValue} popupRendered={popupRendered} renderRecipe={renderRecipe} setPopupRendered={setPopupRendered} calories={obj.nutrition.nutrients[0].amount} recipe={obj.sourceUrl} title={obj.title} image={obj.image} recipeId={obj.id} key={obj.id} /><br />
                     </>
                 )
             })
+            console.log(data)
             setSearchResults(foodResults)
         })
     }
@@ -40,8 +41,6 @@ function CalendarCell({cellId}) {
         fetch(fetchUrl)
         .then(resp => resp.json())
         .then(data => {
-            let recipeDetails = <FoodItem setSearchValue={setSearchValue} setSearchResults={setSearchResults} setPopupRendered={setPopupRendered} title={data.title} image={data.image} recipe={data.sourceUrl} key={data.id} calories={data.nutrition.nutrients[0].amount}/>
-            setSearchResults(recipeDetails)
             let recipeObj = {recipe: data.sourceUrl, name: data.title, image: data.image, calories: data.nutrition.nutrients[0].amount, cell: cellId}
             fetch("http://localhost:3001/recipes", {
                 method: "POST",
@@ -51,7 +50,10 @@ function CalendarCell({cellId}) {
                 body: JSON.stringify(recipeObj)
             })
             .then(res => res.json())
-            .then(console.log)
+            .then(data => {
+                let recipeDetails = <FoodItem setSearchValue={setSearchValue} setSearchResults={setSearchResults} setPopupRendered={setPopupRendered} title={data.name} image={data.image} recipe={data.recipe} key={data.id} recipeId={data.id} calories={data.calories}/>
+                setSearchResults(recipeDetails)
+            })
         })
     }
 
