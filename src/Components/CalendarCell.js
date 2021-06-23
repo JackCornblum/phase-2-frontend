@@ -6,7 +6,7 @@ import { auto } from '@popperjs/core';
 
 import FoodItem from './FoodItem'
 
-function CalendarCell({cellId}) {
+function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
     const [searchValue, setSearchValue] = useState("")
     const [searchResults, setSearchResults] = useState([])
     const [popupRendered, setPopupRendered] = useState(true)
@@ -26,7 +26,7 @@ function CalendarCell({cellId}) {
                 
             })
         })
-    }, [])
+    }, [cellId])
 
     const key = '9408d54a6e154e6abc0e74e0d986d24b'
 
@@ -60,8 +60,24 @@ function CalendarCell({cellId}) {
         .then(resp => resp.json())
         .then(data => {
             console.log(data)
-            let ingredients = data.nutrition.ingredients.map(item => item.name)
-            let recipeObj = {recipe: data.sourceUrl, name: data.title, image: data.image, calories: data.nutrition.nutrients[0].amount, cell: cellId, ingredients: ingredients}
+            let newIngredients = data.nutrition.ingredients.map(item => item.name)
+            let array = ingredients.map(ingred => ingred.name)
+            newIngredients.forEach(ingred => {
+                if (!array.includes(ingred)) {
+                    fetch("http://localhost:3001/ingredients", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({name: ingred})
+                    })
+                } 
+            })
+            setReload(true)
+            console.log(ingredients)
+            // setIngredients(updatedArray)
+            // let ingredObj = {ingredients}
+            let recipeObj = {recipe: data.sourceUrl, name: data.title, image: data.image, calories: data.nutrition.nutrients[0].amount, cell: cellId, ingredients: newIngredients}
             fetch("http://localhost:3001/recipes", {
                 method: "POST",
                 headers: {
@@ -83,7 +99,7 @@ function CalendarCell({cellId}) {
     }
 
     let popupJsx = (
-        <Popup onClose={handleClose} contentStyle={{width:auto}} trigger={<Button  variant="success" size="sm"> Add Meal</Button>} position="right center">
+        <Popup key={cellId} onClose={handleClose} contentStyle={{width:auto}} trigger={<Button  variant="success" size="sm"> Add Meal</Button>} position="right center">
             <form onSubmit={handleSubmit}>
                 <input type="text" value={searchValue} onChange={handleChange}></input>
             </form>

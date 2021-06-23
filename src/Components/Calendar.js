@@ -3,15 +3,15 @@ import { Table } from "react-bootstrap"
 
 import CalendarCell from './CalendarCell';
 
-function Calendar() {
+function Calendar({ingredients, setIngredients, setReload}) {
 
     const morning = ["mondayM", "tuesdayM", "wednesdayM", "thursdayM", "fridayM"]
     const afternoon = ["mondayA", "tuesdayA", "wednesdayA", "thursdayA", "fridayA"]
     const evening = ["mondayE", "tuesdayE", "wednesdayE", "thursdayE", "fridayE"]
 
-    let morningPopup = morning.map(item => <CalendarCell key={item} cellId={item} />)
-    let afternoonPopup = afternoon.map(item => <CalendarCell key={item} cellId={item} />)
-    let eveningPopup = evening.map(item => <CalendarCell key={item} cellId={item} />)
+    let morningPopup = morning.map(item => <CalendarCell setReload={setReload} ingredients={ingredients} setIngredients={setIngredients} key={item} cellId={item} />)
+    let afternoonPopup = afternoon.map(item => <CalendarCell setReload={setReload} ingredients={ingredients} setIngredients={setIngredients} key={item} cellId={item} />)
+    let eveningPopup = evening.map(item => <CalendarCell setReload={setReload} ingredients={ingredients} setIngredients={setIngredients} key={item} cellId={item} />)
 
     return(
         <div>

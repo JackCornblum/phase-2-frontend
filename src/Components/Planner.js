@@ -1,8 +1,15 @@
 import Calendar from "./Calendar"
+import { Button } from "react-bootstrap"
 
-function Planner(){
-    return(
-        <Calendar />
+function Planner({ingredients, setIngredients, setReload}){
+
+
+
+    return (
+        <>
+            <Calendar setReload={setReload} ingredients={ingredients} setIngredients={setIngredients} />
+            <Button>Generate Shopping List</Button>
+        </>
     )
 }
 
