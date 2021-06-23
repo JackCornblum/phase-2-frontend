@@ -1,10 +1,11 @@
-
 import './App.css';
-import {Route, Switch, NavLink} from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Switch } from "react-router-dom"
+
 import Header from './Components/Header';
 import NavBar from './Components/Navbar';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Planner from './Components/Planner';
+import ShoppingList from './Components/ShoppingList'
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
       <Switch>
         <Route exact path="/planner">
           <Planner />
+        </Route>
+        <Route exact path="/shoppinglist">
+          <ShoppingList />
         </Route>
       </Switch>
     </>

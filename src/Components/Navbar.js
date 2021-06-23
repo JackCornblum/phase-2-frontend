@@ -1,5 +1,5 @@
-import {Navbar, Container, Nav} from "react-bootstrap"
-import { NavLink } from "react-router-dom"
+import { Navbar, Container, Nav } from "react-bootstrap"
+// import { NavLink } from "react-router-dom"
 
 function NavBar(){
     return(
@@ -10,7 +10,7 @@ function NavBar(){
             <Navbar.Collapse id="basic-navbar-nav"> */}
             <Nav className="me-auto">
                 <Nav.Link href="/planner">Planner</Nav.Link>
-                {/* <NavLink href="#link">Shopping List</NavLink> */}
+                <Nav.Link href="/shoppinglist">Shopping List</Nav.Link>
             </Nav>
             {/* </Navbar.Collapse> */}
         </Container>
