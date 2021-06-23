@@ -1,4 +1,4 @@
-import { Button } from "bootstrap";
+import { Button } from "react-bootstrap";
 
 
 function FoodItem({title, image, id, setPopupRendered, renderRecipe, popupRendered, setResultState, setSearchValue}) {
@@ -26,7 +26,7 @@ function FoodItem({title, image, id, setPopupRendered, renderRecipe, popupRender
         <div>
             <h3>{title}</h3>
             <img src={image} />
-            <button onClick={handleClick} id={id} size="sm" >{popupRendered ? "Add to Planner" : "Remove"}</button>
+            <Button variant="primary" onClick={handleClick} id={id} size="sm" >{popupRendered ? "Add to Planner" : "Remove"}</Button>
             
             
         </div>
