@@ -11,6 +11,8 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
     const [searchResults, setSearchResults] = useState([])
     const [popupRendered, setPopupRendered] = useState(true)
 
+    console.log(ingredients)
+
     useEffect(() => {
         fetch("http://localhost:3001/recipes")
         .then(resp => resp.json())
@@ -59,22 +61,23 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
         fetch(fetchUrl)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
+        //     console.log(data)
             let newIngredients = data.nutrition.ingredients.map(item => item.name)
-            let array = ingredients.map(ingred => ingred.name)
-            newIngredients.forEach(ingred => {
-                if (!array.includes(ingred)) {
-                    fetch("http://localhost:3001/ingredients", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({name: ingred})
-                    })
-                } 
-            })
-            setReload(true)
-            console.log(ingredients)
+        //     let array = ingredients.map(ingred => ingred.name)
+        //     newIngredients.forEach(ingred => {
+        //         if (!array.includes(ingred)) {
+        //             fetch("http://localhost:3001/ingredients", {
+        //                 method: "POST",
+        //                 headers: {
+        //                     "Content-Type": "application/json"
+        //                 },
+        //                 body: JSON.stringify({name: ingred})
+        //             })
+        //         } 
+        //     })
+                
+        //     setReload(true)
+        //     console.log(ingredients)
             // setIngredients(updatedArray)
             // let ingredObj = {ingredients}
             let recipeObj = {recipe: data.sourceUrl, name: data.title, image: data.image, calories: data.nutrition.nutrients[0].amount, cell: cellId, ingredients: newIngredients}
@@ -89,6 +92,23 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
             .then(data => {
                 let recipeDetails = <FoodItem setSearchValue={setSearchValue} setSearchResults={setSearchResults} setPopupRendered={setPopupRendered} title={data.name} image={data.image} recipe={data.recipe} key={data.id} recipeId={data.id} calories={data.calories}/>
                 setSearchResults(recipeDetails)
+
+
+                let array = ingredients.map(ingred => ingred.name)
+                debugger
+                newIngredients.forEach(ingred => {
+                    if (!array.includes(ingred)) {
+                        fetch("http://localhost:3001/ingredients", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify({name: ingred})
+                        })
+                    } 
+                })
+                // setReload(true)
+                // console.log(ingredients)
             })
         })
     }
