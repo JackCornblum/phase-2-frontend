@@ -7,14 +7,14 @@ function ShoppingList({ingredients, setIngredients}) {
     // need to fix
     function handleDelete(id) {
 
-        fetch(`http://localhost:3001/ingredients/${id}`, {
-            method:"DELETE"
-        })
+        // fetch(`http://localhost:3001/ingredients/${id}`, {
+        //     method:"DELETE"
+        // })
 
-        let copyOfIngredients = [...ingredients]
-        let updatedArray = copyOfIngredients.filter(ingred => ingred.id !== id)
+        // let copyOfIngredients = [...ingredients]
+        // let updatedArray = copyOfIngredients.filter(ingred => ingred.id !== id)
         
-        setIngredients(updatedArray)
+        // setIngredients(updatedArray)
     }
 
     return (
