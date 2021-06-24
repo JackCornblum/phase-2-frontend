@@ -31,6 +31,8 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
     }, [cellId])
 
     const key = '9408d54a6e154e6abc0e74e0d986d24b'
+    const key2 = '1802d7f4d59d40b2b6355a05e091e51d'
+
 
 
     function handleChange(e) {
@@ -39,7 +41,7 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        let fetchUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&query=${searchValue}&number=5&addRecipeNutrition=true`
+        let fetchUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key2}&query=${searchValue}&number=5&addRecipeNutrition=true`
         fetch(fetchUrl)
         .then(res => res.json())
         .then(data => {
@@ -57,7 +59,7 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
 
     function renderRecipe(id){
         console.log(id)
-        let fetchUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${key}&includeNutrition=true`
+        let fetchUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${key2}&includeNutrition=true`
         fetch(fetchUrl)
         .then(resp => resp.json())
         .then(data => {
@@ -95,7 +97,7 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
 
 
                 let array = ingredients.map(ingred => ingred.name)
-                debugger
+                // debugger
                 newIngredients.forEach(ingred => {
                     if (!array.includes(ingred)) {
                         fetch("http://localhost:3001/ingredients", {
