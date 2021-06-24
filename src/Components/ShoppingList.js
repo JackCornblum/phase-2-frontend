@@ -6,6 +6,7 @@ function ShoppingList({ingredients, setIngredients}) {
 
     // need to fix
     function handleDelete(id) {
+<<<<<<< HEAD
 
         // fetch(`http://localhost:3001/ingredients/${id}`, {
         //     method:"DELETE"
@@ -15,6 +16,13 @@ function ShoppingList({ingredients, setIngredients}) {
         // let updatedArray = copyOfIngredients.filter(ingred => ingred.id !== id)
         
         // setIngredients(updatedArray)
+=======
+        let updatedArray = ingredients.filter(ingred => ingred.id !== id)
+        setIngredients(updatedArray)
+        fetch(`http://localhost:3001/ingredients/${id}`, {
+            method: "DELETE"
+        })
+>>>>>>> 72638d6fc938391094581f535752c91e641d8a3e
     }
 
     return (

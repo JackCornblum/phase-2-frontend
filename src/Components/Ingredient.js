@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap"
 
-function Ingredient({ingredient, handleDelete, id}) {
+function Ingredient({id, ingredient, handleDelete}) {
 
     function handleClick(e) {
         handleDelete(id)
