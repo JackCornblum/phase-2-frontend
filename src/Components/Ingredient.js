@@ -1,9 +1,9 @@
 import { Button } from "react-bootstrap"
 
-function Ingredient({ingredient, handleDelete, id}) {
+function Ingredient({ingredient, handleDelete}) {
 
     function handleClick(e) {
-        handleDelete(id)
+        handleDelete(ingredient)
     }
 
     return (

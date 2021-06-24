@@ -90,9 +90,7 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
                 let recipeDetails = <FoodItem setSearchValue={setSearchValue} setSearchResults={setSearchResults} setPopupRendered={setPopupRendered} title={data.name} image={data.image} recipe={data.recipe} key={data.id} recipeId={data.id} calories={data.calories}/>
                 setSearchResults(recipeDetails)
             })
-            .catch(error => console.log(error))
         })
-        .catch(error => console.log(error))
     }
 
     function handleClose(){
