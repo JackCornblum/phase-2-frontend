@@ -1,4 +1,5 @@
 import Ingredient from './Ingredient'
+import {ListGroup} from "react-bootstrap"
 
 function ShoppingList({ingredients, setIngredients}) {
 
@@ -16,9 +17,9 @@ function ShoppingList({ingredients, setIngredients}) {
     return (
         <>
             <h2>Here's what you need to get from the store!</h2>
-            <ul>
+            <ListGroup id="list-group">
                 {ingredientsArray}
-            </ul>
+            </ListGroup>
         </>
     )
 }

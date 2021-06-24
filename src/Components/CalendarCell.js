@@ -11,7 +11,7 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
     const [searchResults, setSearchResults] = useState([])
     const [popupRendered, setPopupRendered] = useState(true)
 
-    console.log(ingredients)
+    // console.log(ingredients)
 
     useEffect(() => {
         fetch("http://localhost:3001/recipes")

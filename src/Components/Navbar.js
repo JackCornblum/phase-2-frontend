@@ -3,8 +3,8 @@ import { Navbar, Container, Nav } from "react-bootstrap"
 
 function NavBar(){
     return(
-        <Navbar bg="success" expand="lg">
-        <Container>
+        <Navbar bg="success" expand="lg" variant="dark" >
+        <Container id="navbar">
             {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav"> */}

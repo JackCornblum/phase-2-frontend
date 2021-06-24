@@ -1,4 +1,4 @@
-import { Button } from "react-bootstrap"
+import { Button, ListGroup } from "react-bootstrap"
 
 function Ingredient({id, ingredient, handleDelete}) {
 
@@ -8,10 +8,12 @@ function Ingredient({id, ingredient, handleDelete}) {
 
     return (
         <>
-            <li>
+      
+            <ListGroup.Item variant="light">
                 {ingredient} &nbsp;&nbsp;
-                <Button variant="success" size="sm" onClick={handleClick}>Remove</Button>
-            </li><br />
+                <Button variant="outline-success" size="sm" onClick={handleClick}>Remove</Button>
+            </ListGroup.Item>
+       
         </>
     )
 }

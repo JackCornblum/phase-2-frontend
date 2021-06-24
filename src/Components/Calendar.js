@@ -15,6 +15,7 @@ function Calendar({ingredients, setIngredients, setReload}) {
 
     return(
         <div>
+            <h2>Plan Your Meals Here:</h2>
             <Table striped bordered>
                 <tbody>
                 <tr>

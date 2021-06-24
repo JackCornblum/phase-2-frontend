@@ -2,8 +2,8 @@
 
 function Header() {
     return(
-        <div>
-            <h1>Meal Planner App</h1>
+        <div id="header">
+            <h1 id="title">Meal Planner App</h1>
         </div>
     )
 }
