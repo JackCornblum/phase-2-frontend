@@ -23,7 +23,7 @@ function FoodItem({title, image, recipeId, calories, recipe, setPopupRendered, r
         <div>
             <a href={recipe} target="_blank" rel="noopener noreferrer">{title}</a><br />
             <small>Calories: {calories}</small><br />
-            <img src={image} alt={title} /><br />
+            <img className="detail-img" src={image} alt={title} /><br />
             <Button variant="success" size="sm" onClick={handleClick} id={recipeId}>{popupRendered ? "Add to Planner" : "Remove"}</Button>
         </div>
     )

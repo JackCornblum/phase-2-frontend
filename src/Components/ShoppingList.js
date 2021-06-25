@@ -3,6 +3,8 @@ import {ListGroup} from "react-bootstrap"
 
 function ShoppingList({ingredients, setIngredients}) {
 
+    document.title = "Meal Planner App | Shopping List";
+
     let ingredientsArray = ingredients.map(ingred => <Ingredient id={ingred.id} key={ingred.name} ingredient={ingred.name} handleDelete={handleDelete} />)
 
     // need to fix

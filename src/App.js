@@ -2,6 +2,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Switch } from "react-router-dom"
 
+import Home from './Components/Home';
 import Header from './Components/Header';
 import NavBar from './Components/Navbar';
 import Planner from './Components/Planner';
@@ -40,6 +41,9 @@ function App() {
       <Header />
       <NavBar />
       <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
         <Route exact path="/planner">
           <Planner setReload={setReload} ingredients={ingredients} setIngredients={setIngredients} />
         </Route>
