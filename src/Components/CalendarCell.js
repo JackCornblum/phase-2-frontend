@@ -1,5 +1,6 @@
 import 'reactjs-popup/dist/index.css';
 import Popup from 'reactjs-popup';
+// import ScrollView from 'devextreme-react/scroll-view';
 import { useEffect, useState } from 'react';
 import { Button } from "react-bootstrap"
 import { auto } from '@popperjs/core';
@@ -122,10 +123,12 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
 
     let popupJsx = (
         <Popup key={cellId} onClose={handleClose} contentStyle={{width:auto}} trigger={<Button  variant="success" size="sm"> Add Meal</Button>} position="right center">
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={searchValue} onChange={handleChange}></input>
-            </form>
-            {searchResults}   
+            
+                <form onSubmit={handleSubmit}>
+                    <input type="text" value={searchValue} onChange={handleChange}></input>
+                </form>
+                {searchResults}   
+            
         </Popup>
     )
 

@@ -102,3 +102,9 @@ h1 {
 h1#title{
   font-weight: bold;
 }
+
+div.popup-content {
+  overflow-y: auto;
+  max-height: 400px;
+
+}
