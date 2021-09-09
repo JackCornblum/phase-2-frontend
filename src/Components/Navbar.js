@@ -9,6 +9,7 @@ function NavBar(){
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/planner">Planner</Nav.Link>
                 <Nav.Link href="/shoppinglist">Shopping List</Nav.Link>
+                <Nav.Link href="/login">Login</Nav.Link>
             </Nav>
         </Container>
         </Navbar>

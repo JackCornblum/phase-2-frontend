@@ -42,7 +42,7 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        let fetchUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key2}&query=${searchValue}&number=5&addRecipeNutrition=true`
+        let fetchUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${key2}&query=${searchValue}&number=10&addRecipeNutrition=true`
         fetch(fetchUrl)
         .then(res => res.json())
         .then(data => {
@@ -134,17 +134,7 @@ function CalendarCell({cellId, ingredients, setIngredients, setReload}) {
 
     return (
         <td id={cellId}>
-            {/* <Popup contentStyle={{width:auto}} trigger={<Button variant="success" size="sm"> Add Meal</Button>} position="right center">
-                <form onSubmit={handleSubmit}>
-                    <input type="text" value={searchValue} onChange={handleChange}></input>
-                </form>
-
-                {searchResults}
-                
-            </Popup> */}
             {popupRendered ? popupJsx : searchResults }
-        
-
         </td>
     )
 }
